@@ -1,0 +1,406 @@
+:root {
+  --primary: #2e6f40;       /* tea-garden green — matches the mobile app */
+  --primary-dark: #1f4c2c;
+  --accent: #e0a800;         /* warm amber */
+  --background: #faf7f0;     /* warm off-white, low glare */
+  --surface: #ffffff;
+  --text-dark: #1b1b1b;
+  --text-muted: #6b6459;
+  --border: #e6e0d2;
+  --alert: #b3261e;
+  --alert-bg: #fbeceb;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* --- Top bar --- */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-display);
+  font-size: 20px;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.patient-select {
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dark);
+}
+
+/* --- Stat cards --- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.stat-trend {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.stat-trend.up { color: var(--primary); }
+.stat-trend.down { color: var(--alert); }
+
+/* --- Panels --- */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.panel-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.panel-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 16px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 800px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* --- Alerts list --- */
+.alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--alert-bg);
+  border: 1px solid #f0c9c6;
+}
+
+.alert-item.info {
+  background: #f2f6ee;
+  border-color: var(--border);
+}
+
+.alert-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--alert);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.alert-item.info .alert-dot {
+  background: var(--primary);
+}
+
+.alert-text {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.alert-time {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* --- Activity log --- */
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.log-table th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.log-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  background: #f2f6ee;
+  color: var(--primary-dark);
+}
+
+.empty-state {
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 24px 0;
+  text-align: center;
+}
+
+/* =========================================================
+   Patient View (Web) — ported from the Flutter mobile app.
+   Same design rules: large text, high contrast, big tap
+   targets, minimal palette, shallow navigation.
+   ========================================================= */
+
+.view-switcher {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.view-tab {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.view-tab.active {
+  color: var(--primary-dark);
+  border-bottom-color: var(--primary);
+}
+
+.patient-shell {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 8px 48px;
+  text-align: center;
+}
+
+.patient-greeting {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+
+.patient-tile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 28px 20px;
+  margin-bottom: 20px;
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  background: rgba(46, 111, 64, 0.08);
+  border: 2px solid var(--primary);
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.patient-tile-amber {
+  color: #7a5b00;
+  background: rgba(224, 168, 0, 0.12);
+  border-color: var(--accent);
+}
+
+.patient-tile-small {
+  width: auto;
+  padding: 14px 28px;
+  font-size: 18px;
+  margin: 12px auto 0;
+  justify-content: center;
+}
+
+.patient-tile-icon {
+  font-size: 40px;
+}
+
+.patient-round-label,
+.patient-instruction {
+  font-size: 18px;
+  color: var(--text-muted);
+  margin: 8px 0;
+}
+
+.patient-target {
+  font-size: 64px;
+  margin: 16px 0 32px;
+}
+
+.patient-game-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.patient-game-tile {
+  width: 84px;
+  height: 84px;
+  font-size: 36px;
+  background: rgba(46, 111, 64, 0.08);
+  border: 1.5px solid var(--primary);
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.patient-result-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  font-size: 18px;
+}
+
+.patient-back {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--primary-dark);
+  cursor: pointer;
+  margin-bottom: 12px;
+  padding: 0;
+}
+
+.patient-reminder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.patient-reminder-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-align: left;
+}
+
+.patient-reminder-icon {
+  font-size: 32px;
+}
+
+.patient-reminder-type {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.patient-reminder-time {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.patient-select-input {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
