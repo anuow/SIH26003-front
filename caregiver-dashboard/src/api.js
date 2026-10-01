@@ -1,6 +1,6 @@
 // Points at the same FastAPI backend the mobile app syncs to.
 // TODO: replace with your deployed backend URL.
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 /**
  * Fetches game sessions for a patient. Falls back to null on any
