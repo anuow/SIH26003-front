@@ -20,11 +20,10 @@ def create_game_session(session: schemas.GameSessionIn, db: Session = Depends(ge
         ))
         db.commit()
 
-    db_session = models.GameSession(**session.model_dump())
-    db.merge(db_session)
+    db_reminder = db.merge(models.Reminder(**reminder.model_dump()))
     db.commit()
-    db.refresh(db_session)
-    return db_session
+    db.refresh(db_reminder)
+    return db_reminder
 
 
 @router.get("/patients/{patient_id}/game-sessions", response_model=list[schemas.GameSessionOut])
